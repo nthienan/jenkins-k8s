@@ -3,8 +3,86 @@ FROM jenkins/jenkins:2.169
 ENV CASC_JENKINS_CONFIG=$JENKINS_HOME/jcasc
 RUN mkdir $CASC_JENKINS_CONFIG && \
     /usr/local/bin/install-plugins.sh \
+      apache-httpcomponents-client-4-api:4.5.5-3.0 \
+      credentials:2.1.18 \
+      cloudbees-folder:6.7 \
+      configuration-as-code:1.8 \
+      configuration-as-code-support:1.8 \
+      plain-credentials:1.5 \
+      kubernetes-credentials:0.4.0 \
+      workflow-step-api:2.19 \
+      durable-task:1.29 \
+      jackson2-api:2.9.8 \
+      structs:1.17 \
+      variant:1.2 \
+      jdk-tool:1.2 \
+      script-security:1.56 \
+      command-launcher:1.3 \
+      scm-api:2.4.0 \
+      workflow-api:2.33 \
+      bouncycastle-api:2.17 \
+      junit:1.27 \
+      antisamy-markup-formatter:1.5 \
+      token-macro:2.7 \
+      build-timeout:1.19 \
+      ssh-credentials:1.15 \
+      credentials-binding:1.18 \
+      timestamper:1.9 \
+      workflow-support:3.2 \
+      workflow-durable-task-step:2.29 \
+      matrix-project:1.14 \
+      resource-disposer:0.12 \
+      ws-cleanup:0.37 \
+      ant:1.9 \
+      gradle:1.31 \
+      pipeline-milestone-step:1.3.1 \
+      jquery-detached:1.2.1 \
+      ace-editor:1.1 \
+      workflow-scm-step:2.7 \
+      workflow-cps:2.65 \
+      pipeline-input-step:2.10 \
+      pipeline-stage-step:2.3 \
+      workflow-job:2.32 \
+      pipeline-graph-analysis:1.9 \
+      pipeline-rest-api:2.10 \
+      handlebars:1.1.1 \
+      momentjs:1.1.1 \
+      pipeline-stage-view:2.10 \
+      pipeline-build-step:2.8 \
+      pipeline-model-api:1.3.7 \
+      pipeline-model-extensions:1.3.7 \
+      jsch:0.1.55 \
+      git-client:2.7.6 \
+      git-server:1.7 \
+      workflow-cps-global-lib:2.13 \
+      display-url-api:2.3.1 \
+      mailer:1.23 \
+      branch-api:2.2.0 \
+      workflow-multibranch:2.21 \
+      authentication-tokens:1.3 \
+      docker-commons:1.13 \
+      workflow-basic-steps:2.15 \
+      docker-workflow:1.17 \
+      pipeline-stage-tags-metadata:1.3.7 \
+      pipeline-model-declarative-agent:1.1.1 \
+      pipeline-model-definition:1.3.7 \
+      lockable-resources:2.5 \
+      workflow-aggregator:2.6 \
+      github-api:1.95 \
+      git:3.9.3 \
+      github:1.29.4 \
+      github-branch-source:2.4.5 \
+      pipeline-github-lib:1.0 \
+      mapdb-api:1.0.9.0 \
+      subversion:2.12.1 \
+      ssh-slaves:1.29.4 \
+      matrix-auth:2.3 \
+      pam-auth:1.4 \
+      ldap:1.20 \
+      email-ext:2.66 \
       configuration-as-code:1.8 \
       configuration-as-code-support:1.8 \
       kubernetes:1.14.9 \
-      kubernetes-ci:1.3
+      kubernetes-ci:1.3 \
+      job-dsl:1.72
 
