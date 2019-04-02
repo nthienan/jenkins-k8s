@@ -80,6 +80,7 @@ RUN mkdir $CASC_JENKINS_CONFIG && \
       pam-auth:1.4 \
       ldap:1.20 \
       email-ext:2.66 \
+      artifactory: 3.2.1 \
       configuration-as-code:1.8 \
       configuration-as-code-support:1.8 \
       kubernetes:1.14.9 \
