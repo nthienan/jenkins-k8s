@@ -16,5 +16,4 @@ fi
 if [ "$MODE" = "deploy" ]; then
     echo -e '\nDeploying...'
     docker push $IMAGE:$tag
-  -$tag
 fi
