@@ -81,8 +81,6 @@ RUN mkdir $CASC_JENKINS_CONFIG && \
       ldap:1.20 \
       email-ext:2.66 \
       artifactory:3.2.1 \
-      configuration-as-code:1.8 \
-      configuration-as-code-support:1.8 \
       kubernetes:1.14.9 \
       kubernetes-ci:1.3 \
       job-dsl:1.72
