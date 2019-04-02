@@ -3,21 +3,16 @@ FROM jenkins/jenkins:2.169
 ENV CASC_JENKINS_CONFIG=$JENKINS_HOME/jcasc
 RUN mkdir $CASC_JENKINS_CONFIG && \
     /usr/local/bin/install-plugins.sh \
-      apache-httpcomponents-client-4-api:4.5.5-3.0 \
-      credentials:2.1.18 \
+      artifactory:3.2.1 \
+      kubernetes:1.14.9 \
+      kubernetes-ci:1.3 \
+      sonar:2.8.1 \
       cloudbees-folder:6.7 \
-      configuration-as-code:1.8 \
-      configuration-as-code-support:1.8 \
-      plain-credentials:1.5 \
-      kubernetes-credentials:0.4.0 \
-      workflow-step-api:2.19 \
-      durable-task:1.29 \
-      jackson2-api:2.9.8 \
-      structs:1.17 \
-      variant:1.2 \
       jdk-tool:1.2 \
       script-security:1.56 \
       command-launcher:1.3 \
+      structs:1.17 \
+      workflow-step-api:2.19 \
       scm-api:2.4.0 \
       workflow-api:2.33 \
       bouncycastle-api:2.17 \
@@ -25,10 +20,13 @@ RUN mkdir $CASC_JENKINS_CONFIG && \
       antisamy-markup-formatter:1.5 \
       token-macro:2.7 \
       build-timeout:1.19 \
+      credentials:2.1.18 \
       ssh-credentials:1.15 \
+      plain-credentials:1.5 \
       credentials-binding:1.18 \
       timestamper:1.9 \
       workflow-support:3.2 \
+      durable-task:1.29 \
       workflow-durable-task-step:2.29 \
       matrix-project:1.14 \
       resource-disposer:0.12 \
@@ -37,6 +35,7 @@ RUN mkdir $CASC_JENKINS_CONFIG && \
       gradle:1.31 \
       pipeline-milestone-step:1.3.1 \
       jquery-detached:1.2.1 \
+      jackson2-api:2.9.8 \
       ace-editor:1.1 \
       workflow-scm-step:2.7 \
       workflow-cps:2.65 \
@@ -51,11 +50,12 @@ RUN mkdir $CASC_JENKINS_CONFIG && \
       pipeline-build-step:2.8 \
       pipeline-model-api:1.3.7 \
       pipeline-model-extensions:1.3.7 \
+      apache-httpcomponents-client-4-api:4.5.5-3.0 \
       jsch:0.1.55 \
       git-client:2.7.6 \
       git-server:1.7 \
       workflow-cps-global-lib:2.13 \
-      display-url-api:2.3.1 \
+      display-url-api:2.3.0 \
       mailer:1.23 \
       branch-api:2.2.0 \
       workflow-multibranch:2.21 \
@@ -71,7 +71,7 @@ RUN mkdir $CASC_JENKINS_CONFIG && \
       github-api:1.95 \
       git:3.9.3 \
       github:1.29.4 \
-      github-branch-source:2.4.5 \
+      github-branch-source:2.4.2 \
       pipeline-github-lib:1.0 \
       mapdb-api:1.0.9.0 \
       subversion:2.12.1 \
@@ -80,8 +80,84 @@ RUN mkdir $CASC_JENKINS_CONFIG && \
       pam-auth:1.4 \
       ldap:1.20 \
       email-ext:2.66 \
-      artifactory:3.2.1 \
-      kubernetes:1.14.9 \
-      kubernetes-ci:1.3 \
-      job-dsl:1.72
+      swarm:3.15 \
+      windows-slaves:1.4 \
+      jquery:1.12.4-0 \
+      javadoc:1.5 \
+      external-monitor-job:1.7 \
+      jquery-ui:1.0.2 \
+      role-strategy:2.10 \
+      job-dsl:1.72 \
+      configuration-as-code:1.8 \
+      configuration-as-code-support:1.8 \
+      jobConfigHistory:2.19 \
+      active-directory:2.12 \
+      backlog:2.4 \
+      scp:1.8 \
+      dynamic_extended_choice_parameter:1.0.1 \
+      build-blocker-plugin:1.7.3 \
+      cvs:2.14 \
+      jira:3.0.5 \
+      mashup-portlets-plugin:1.0.9 \
+      weblogic-deployer-plugin:4.1 \
+      pipeline-githubnotify-step:1.0.4 \
+      maven-plugin:3.2 \
+      sasunit-plugin:1.024 \
+      ivy:2.0 \
+      envinject:2.1.6 \
+      capitomcat:0.1.0 \
+      github-organization-folder:1.6 \
+      build-timestamp:1.0.3 \
+      config-file-provider:3.6 \
+      mstestrunner:1.3.0 \
+      robot:1.6.5 \
+      git-parameter:0.9.10 \
+      icon-shim:2.0.3 \
+      wildfly-deployer:1.0.2 \
+      git-tag-message:1.6.1 \
+      database-h2:1.1 \
+      build-user-vars-plugin:1.5 \
+      multiple-scms:0.6 \
+      bitbucket:1.1.8 \
+      claim:2.15 \
+      built-on-column:1.1 \
+      conditional-buildstep:1.3.6 \
+      job-parameter-summary:0.5 \
+      parameter-separator:1.0 \
+      database:1.5 \
+      xunit:2.3.3 \
+      node-iterator-api:1.5.0 \
+      deploy:1.13 \
+      docker-plugin:1.1.6 \
+      nested-view:1.17 \
+      ssh-agent:1.17 \
+      ansicolor:0.6.2 \
+      groovy:2.2 \
+      build-name-setter:1.7.1 \
+      mercurial:2.5 \
+      readonly-parameters:1.0.0 \
+      build-cause-run-condition:0.1 \
+      mongodb:1.3 \
+      persistent-parameter:1.1 \
+      authorize-project:1.3.0 \
+      run-condition:1.2 \
+      deployment-notification:1.4 \
+      ssh:2.6.1 \
+      JDK_Parameter_Plugin:1.0 \
+      simple-theme-plugin:0.5.1 \
+      hidden-parameter:0.0.4 \
+      join:1.21 \
+      ftppublisher:1.2 \
+      mstest:1.0.0 \
+      msbuild:1.29 \
+      nodelabelparameter:1.7.2 \
+      publish-over-ftp:1.15 \
+      clearcase:1.6.3 \
+      jenkins-jira-issue-updater:1.18 \
+      golang:1.2 \
+      blueocean:1.14.0 \
+      github-autostatus:3.2 \
+      embeddable-build-status:2.0 \
+      view-job-filters:2.1.1 \
+      dashboard-view: 2.10
 
