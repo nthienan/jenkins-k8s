@@ -1,7 +1,6 @@
 FROM jenkins/jenkins:2.169
 
 ENV CASC_JENKINS_CONFIG=$JENKINS_HOME/jcasc
-RUN
 RUN mkdir $CASC_JENKINS_CONFIG && \
     /usr/local/bin/install-plugins.sh \
       configuration-as-code:1.8 \
