@@ -1,0 +1,33 @@
+jenkins:
+  systemMessage: "Jenkins configured automatically by <b>Jenkins Configuration as Code</b> plugin.<br/> It's <b>NOT RECOMMENDED</b> for any manual configuration changes.<br/> Please contact admin for any required changes."
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+        - id: admin
+          password: admin
+  numExecutors: 5
+  slaveAgentPort: 50000
+  agentProtocols:
+  - JNLP4-connect
+  - Ping
+  scmCheckoutRetryCount: 2
+  disableRememberMe: false
+  markupFormatter:
+    rawHtml:
+      disableSyntaxHighlighting: true
+  mode: NORMAL
+unclassified:
+  location:
+    url: http://jenkins.example.com
+  artifactorybuilder:
+    useCredentialsPlugin: true
+    artifactoryServers:
+    - serverId: artifactory.example.com
+      artifactoryUrl: http://artifactory.example.com/artifactory
+      deployerCredentialsConfig:
+          credentialsId: devops

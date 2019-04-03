@@ -1,0 +1,60 @@
+jobs:
+- script: >
+    folder('sample') {
+      displayName('Sample')
+    }
+- script: >
+    freeStyleJob('sample/job-1') {
+      description('Normal job')
+      label('normal')
+      scm {
+        github('nthienan/jenkins-k8s')
+      }
+      steps {
+        shell('''\
+          set +x
+          echo $HOSTNAME
+          ls -la
+          cat README.md
+        '''.stripIndent())
+      }
+    }
+- script: >
+    pipelineJob('sample/docker-job') {
+      definition {
+        cps {
+          sandbox(true)
+          script('''\
+            pipeline {
+              agent {
+                label 'docker-18-05 && docker'
+              }
+              stages {
+                stage('Build') {
+                  steps {
+                    container('docker-18-05') {
+                      sh """
+                        set +x
+                        echo $HOSTNAME
+                        sleep 20
+                        docker pull nthienan/jenkins:2.169-1
+                      """
+                    }
+                  }
+                }
+                stage('Archive') {
+                  steps {
+                    container('docker-18-05') {
+                      sh """
+                        set +x
+                        docker images
+                      """
+                    }
+                  }
+                }
+              }
+            }'''
+          .stripIndent())
+        }
+      }
+    }

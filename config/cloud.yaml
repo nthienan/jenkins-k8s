@@ -1,0 +1,61 @@
+jenkins:
+  clouds:
+  - kubernetes:
+      name: devops-dev
+      serverUrl: https://35.240.164.247
+      skipTlsVerify: false
+      namespace: default
+      jenkinsUrl: http://jenkins.default.svc.cluster.local
+      connectTimeout: 5
+      readTimeout: 15
+      maxRequestsPerHostStr: "32"
+      containerCapStr: "10"
+      templates:
+      - name: slave
+        label: "normal jnlp"
+        slaveConnectTimeout: "100"
+        yaml: |
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            name: slave
+            labels:
+              app: jenkins
+              role: slave
+              component: ci-cd
+          spec:
+            containers:
+            - name: jnlp
+              image: jenkins/jnlp-slave:3.27-1-alpine
+              env:
+              - name: JENKINS_URL
+                value: "http://jenkins.default.svc.cluster.local"
+      - name: docker-18-05-slave
+        label: "docker docker-18-05"
+        slaveConnectTimeout: "300"
+        yaml: |
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            name: docker-18-05-slave
+            labels:
+              app: jenkins
+              role: slave
+              component: ci-cd
+          spec:
+            containers:
+            - name: jnlp
+              image: jenkins/jnlp-slave:3.27-1-alpine
+              env:
+              - name: JENKINS_URL
+                value: "http://jenkins.default.svc.cluster.local"
+            - name: docker-18-05
+              image: docker:18.05-dind
+              securityContext:
+                privileged: true
+              volumeMounts:
+              - name: dind-storage
+                mountPath: /var/lib/docker
+            volumes:
+            - name: dind-storage
+              emptyDir: {}

@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-master
+  labels:
+    app: jenkins
+    role: master
+    component: ci-cd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+      role: master
+      component: ci-cd
+  template:
+    metadata:
+      labels:
+        app: jenkins
+        role: master
+        component: ci-cd
+    spec:
+      containers:
+      - name: jenkins
+        image: nthienan/jenkins:2.169-3
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        - name: jnlp
+          containerPort: 50000
+          protocol: TCP
+        volumeMounts:
+        - name: jenkins-home
+          mountPath: /var/jenkins_home
+        - name: jenkins-cfg
+          mountPath: /var/jenkins_home/jcasc
+        readinessProbe:
+          httpGet:
+            path: /login
+            port: 8080
+          initialDelaySeconds: 100
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /login
+            port: 8080
+          initialDelaySeconds: 100
+          periodSeconds: 5
+      volumes:
+      - name: jenkins-home
+        persistentVolumeClaim:
+          claimName: jenkins-pvc
+      - name: jenkins-cfg
+        configMap:
+          name: jenkins-config
+          items:
+          - key: jenkins.yaml
+            path: jenkins.yaml
+          - key: credential.yaml
+            path: credential.yaml
+          - key: cloud.yaml
+            path: cloud.yaml
+          - key: job.yaml
+            path: job.yaml
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+      serviceAccount: jenkins
