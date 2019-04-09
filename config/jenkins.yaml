@@ -23,11 +23,11 @@ jenkins:
   mode: NORMAL
 unclassified:
   location:
-    url: http://jenkins.example.com
+    url: http://jenkins.nthienan.com/
   artifactorybuilder:
     useCredentialsPlugin: true
     artifactoryServers:
-    - serverId: artifactory.example.com
-      artifactoryUrl: http://artifactory.example.com/artifactory
+    - serverId: artifactory.nthienan.com
+      artifactoryUrl: http://artifactory.nthienan.com/artifactory
       deployerCredentialsConfig:
           credentialsId: devops
