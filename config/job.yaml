@@ -58,3 +58,13 @@ jobs:
         }
       }
     }
+- script: >
+    multibranchPipelineJob('sample/vault-sample') {
+      branchSources {
+        github {
+          checkoutCredentialsId('github_nthienan')
+          repoOwner('nthienan')
+          repository('ci-sample')
+        }
+      }
+    }
