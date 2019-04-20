@@ -35,6 +35,13 @@ spec:
           mountPath: /var/jenkins_home
         - name: jenkins-cfg
           mountPath: /var/jenkins_home/jcasc
+        resources:
+          requests:
+            cpu: 1
+            memory: 2Gi
+          limits:
+            cpu: 1.5
+            memory: 3Gi
         readinessProbe:
           httpGet:
             path: /login
