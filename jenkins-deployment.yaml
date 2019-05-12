@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: jenkins
-        image: nthienan/jenkins:2.169-3
+        image: nthienan/jenkins:2.176-1
         ports:
         - name: http
           containerPort: 8080

@@ -69,3 +69,14 @@ jobs:
         }
       }
     }
+- script: >
+    multibranchPipelineJob('sample/db-backup') {
+      branchSources {
+        github {
+          scanCredentialsId('github_nthienan')
+          checkoutCredentialsId('github_nthienan')
+          repoOwner('nthienan')
+          repository('db-backup')
+        }
+      }
+    }
